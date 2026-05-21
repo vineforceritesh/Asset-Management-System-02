@@ -1,0 +1,101 @@
+/* =========================================
+   CREATE ASSET MODAL STYLING
+   ========================================= */
+
+.form-horizontal {
+  padding: 5px;
+}
+
+/* ================= LABELS ================= */
+
+.col-form-label {
+  font-weight: 600;
+  color: #343a40;
+  padding-top: 10px;
+}
+
+/* ================= INPUTS ================= */
+
+.form-control {
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  background-color: #fff;
+}
+
+/* Focus Effect */
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.2);
+}
+
+/* ================= REQUIRED FIELD ================= */
+
+.required label::after {
+  content: " *";
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* ================= MODAL BODY ================= */
+
+.modal-body {
+  padding: 1.5rem;
+  background-color: #fafafa;
+}
+
+/* ================= FORM GROUP ================= */
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+/* ================= VALIDATION ================= */
+
+abp-validation-summary {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+/* ================= BUTTONS ================= */
+
+button.btn {
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ================= SELECT DROPDOWN ================= */
+
+select.form-control {
+  appearance: auto;
+  cursor: pointer;
+}
+
+/* ================= DATE INPUT ================= */
+
+input[type="date"] {
+  cursor: pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  .col-form-label {
+    margin-bottom: 6px;
+  }
+
+  .form-control {
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,251 @@
+<div [@routerTransition]>
+
+  <!-- ===== Header ===== -->
+  <section class="content-header">
+
+    <div class="container-fluid">
+
+      <div class="row align-items-center">
+
+        <div class="col-6">
+
+          <h1>
+            {{ 'Assets' | localize }}
+          </h1>
+
+        </div>
+
+        <div class="col-6 text-right">
+
+          <button
+            class="btn bg-blue"
+            (click)="createAsset()">
+
+            <i class="fa fa-plus-square mr-1"></i>
+
+            {{ 'CreateAsset' | localize }}
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ===== Content ===== -->
+  <section class="content px-2 pb-5">
+
+    <div class="container-fluid">
+
+      <div class="card mb-0 table-wrapper">
+
+        <!-- 🔍 Search -->
+        <div class="card-header">
+
+          <div class="row">
+
+            <div class="col-md-6"></div>
+
+            <div class="col-md-6">
+
+              <div class="input-group">
+
+                <div class="input-group-prepend">
+
+                  <button
+                    class="btn bg-blue"
+                    (click)="list()">
+
+                    <i class="fas fa-search"></i>
+
+                  </button>
+
+                </div>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="keyword"
+                  [placeholder]="'SearchWithThreeDot' | localize"
+                  (keyup.enter)="list()" />
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- 📋 Table -->
+        <div class="card-body">
+
+          <div class="table-responsive">
+
+            <p-table
+              class="assets-table"
+              #dataTable
+              [value]="primengTableHelper.records"
+              [lazy]="true"
+              (onLazyLoad)="list($event)"
+              [paginator]="false"
+              [rows]="primengTableHelper.defaultRecordsCountPerPage"
+              [tableStyle]="{ 'min-width': '80rem' }">
+
+              <!-- Header -->
+              <ng-template pTemplate="header">
+
+                <tr>
+
+                  <th pSortableColumn="name">
+                    {{ 'Name' | localize }}
+                    <p-sortIcon field="name"></p-sortIcon>
+                  </th>
+
+                  <th pSortableColumn="type">
+                    {{ 'Type' | localize }}
+                    <p-sortIcon field="type"></p-sortIcon>
+                  </th>
+
+                  <th pSortableColumn="serialNumber">
+                    {{ 'SerialNumber' | localize }}
+                    <p-sortIcon field="serialNumber"></p-sortIcon>
+                  </th>
+
+                  <th pSortableColumn="purchaseDate">
+                    {{ 'PurchaseDate' | localize }}
+                    <p-sortIcon field="purchaseDate"></p-sortIcon>
+                  </th>
+
+                  <th pSortableColumn="status">
+                    {{ 'Status' | localize }}
+                    <p-sortIcon field="status"></p-sortIcon>
+                  </th>
+
+                  <th pSortableColumn="createdDate">
+                    {{ 'CreatedDate' | localize }}
+                    <p-sortIcon field="createdDate"></p-sortIcon>
+                  </th>
+
+                  <th style="width: 180px">
+                    {{ 'Actions' | localize }}
+                  </th>
+
+                </tr>
+
+              </ng-template>
+
+              <!-- Body -->
+              <ng-template pTemplate="body" let-record>
+
+                <tr>
+
+                  <td>
+                    {{ record.name }}
+                  </td>
+
+                  <!-- FIXED -->
+                  <td>
+                    {{ record.type }}
+                  </td>
+
+                  <td>
+                    {{ record.serialNumber }}
+                  </td>
+
+                  <td>
+                    {{ record.purchaseDate | date:'dd/MM/yyyy' }}
+                  </td>
+
+                  <td>
+
+                    <span
+                      class="badge"
+                      [ngClass]="record.status === 1 ? 'badge-success' : 'badge-danger'">
+
+                      {{ getAssetStatusName(record.status) }}
+
+                    </span>
+
+                  </td>
+
+                  <td>
+                    {{ record.createdDate | date:'dd/MM/yyyy' }}
+                  </td>
+
+                  <td>
+
+                    <div
+                      class="d-inline-flex align-items-center gap-2 justify-content-between">
+
+                      <!-- Edit -->
+                      <button
+                        type="button"
+                        class="btn btn-sm bg-secondary d-inline-flex align-items-center px-2"
+                        (click)="editAsset(record)">
+
+                        <i class="fas fa-pencil-alt mr-1"></i>
+
+                        {{ 'Edit' | localize }}
+
+                      </button>
+
+                      <!-- Delete -->
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-danger d-inline-flex align-items-center px-2"
+                        (click)="delete(record)">
+
+                        <i class="fas fa-trash mr-1"></i>
+
+                        {{ 'Delete' | localize }}
+
+                      </button>
+
+                    </div>
+
+                  </td>
+
+                </tr>
+
+              </ng-template>
+
+            </p-table>
+
+            <!-- ❌ No Data -->
+            <div
+              class="primeng-no-data text-center"
+              *ngIf="assets.length === 0">
+
+              {{ 'NoData' | localize }}
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- 📑 Pagination -->
+        <div class="card-footer bg-white border-top">
+
+          <p-paginator
+            #paginator
+            [rows]="primengTableHelper.defaultRecordsCountPerPage"
+            [totalRecords]="primengTableHelper.totalRecordsCount"
+            [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage"
+            (onPageChange)="list($event)">
+
+          </p-paginator>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

@@ -1,0 +1,257 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createAssetForm="ngForm"
+  (ngSubmit)="save()">
+
+  <!-- Modal Header -->
+  <abp-modal-header
+    [title]="'CreateAsset' | localize"
+    (onCloseClick)="bsModalRef.hide()">
+  </abp-modal-header>
+
+  <div class="modal-body">
+
+    <!-- Name -->
+    <div class="form-group row required">
+
+      <label
+        class="col-md-3 col-form-label"
+        for="name">
+
+        {{ 'Name' | localize }}
+
+      </label>
+
+      <div class="col-md-9">
+
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="name"
+          required
+          minlength="2"
+          maxlength="100"
+          [(ngModel)]="asset.name"
+          #nameModel="ngModel"
+          #nameEl />
+
+        <abp-validation-summary
+          [control]="nameModel"
+          [controlEl]="nameEl">
+        </abp-validation-summary>
+
+      </div>
+
+    </div>
+
+    <!-- Asset Type -->
+    <div class="form-group row required">
+
+      <label
+        class="col-md-3 col-form-label"
+        for="type">
+
+        {{ 'AssetType' | localize }}
+
+      </label>
+
+      <div class="col-md-9">
+
+        <select
+          class="form-control"
+          name="type"
+          id="type"
+          required
+          [(ngModel)]="asset.type"
+          #typeModel="ngModel"
+          #typeEl>
+
+          <option value="">
+            Select Asset Type
+          </option>
+
+          <option
+            *ngFor="let type of assetTypes"
+            [value]="type.id">
+
+            {{ type.name }}
+
+          </option>
+
+        </select>
+
+        <abp-validation-summary
+          [control]="typeModel"
+          [controlEl]="typeEl">
+        </abp-validation-summary>
+
+      </div>
+
+    </div>
+
+    <!-- Serial Number -->
+    <!-- Serial Number -->
+<div class="form-group row required">
+
+  <label
+    class="col-md-3 col-form-label"
+    for="serialNumber">
+
+    {{ 'SerialNumber' | localize }}
+
+  </label>
+
+  <div class="col-md-9">
+
+    <input
+      type="text"
+      class="form-control"
+      name="serialNumber"
+      id="serialNumber"
+      required
+      minlength="2"
+      maxlength="100"
+      [(ngModel)]="asset.serialNumber"
+      #serialModel="ngModel"
+      #serialEl />
+
+    <abp-validation-summary
+      [control]="serialModel"
+      [controlEl]="serialEl">
+    </abp-validation-summary>
+
+    <!-- Required Validation -->
+    <div
+      *ngIf="serialModel.invalid && serialModel.touched"
+      class="text-danger">
+
+      Serial Number is required
+
+    </div>
+
+  </div>
+
+</div>
+
+
+    <!-- Purchase Date -->
+    <div class="form-group row required">
+
+      <label
+        class="col-md-3 col-form-label"
+        for="purchaseDate">
+
+        {{ 'PurchaseDate' | localize }}
+
+      </label>
+
+      <div class="col-md-9">
+
+        <input
+          type="date"
+          class="form-control"
+          name="purchaseDate"
+          id="purchaseDate"
+          required
+          [(ngModel)]="asset.purchaseDate"
+          #purchaseModel="ngModel"
+          #purchaseEl />
+
+        <abp-validation-summary
+          [control]="purchaseModel"
+          [controlEl]="purchaseEl">
+        </abp-validation-summary>
+
+      </div>
+
+    </div>
+
+    <!-- Status -->
+    <div class="form-group row required">
+
+      <label
+        class="col-md-3 col-form-label"
+        for="status">
+
+        {{ 'Status' | localize }}
+
+      </label>
+
+      <div class="col-md-9">
+
+        <select
+          class="form-control"
+          name="status"
+          id="status"
+          required
+          [(ngModel)]="asset.status"
+          #statusModel="ngModel"
+          #statusEl>
+
+          <option value="">
+            Select Status
+          </option>
+
+          <option
+            *ngFor="let status of assetStatus"
+            [value]="status.id">
+
+            {{ status.name }}
+
+          </option>
+
+        </select>
+
+        <abp-validation-summary
+          [control]="statusModel"
+          [controlEl]="statusEl">
+        </abp-validation-summary>
+
+      </div>
+
+    </div>
+
+    <!-- Created Date -->
+    <div class="form-group row required">
+
+      <label
+        class="col-md-3 col-form-label"
+        for="createdDate">
+
+        {{ 'CreatedDate' | localize }}
+
+      </label>
+
+      <div class="col-md-9">
+
+        <input
+          type="date"
+          class="form-control"
+          name="createdDate"
+          id="createdDate"
+          required
+          [(ngModel)]="asset.createdDate"
+          #createdModel="ngModel"
+          #createdEl />
+
+        <abp-validation-summary
+          [control]="createdModel"
+          [controlEl]="createdEl">
+        </abp-validation-summary>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Modal Footer -->
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createAssetForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()">
+  </abp-modal-footer>
+
+</form>

@@ -1,0 +1,146 @@
+/* =====================================================
+   ASSETS TABLE – UNIQUE COLUMN STYLE (PrimeNG)
+   ===================================================== */
+
+.assets-table {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Table layout */
+.assets-table .p-datatable-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* ================= HEADER ================= */
+.assets-table thead th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #343a40;
+  padding: 12px 14px;
+  border-bottom: 2px solid #dee2e6;
+}
+
+/* ================= BODY CELLS ================= */
+.assets-table tbody td {
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #495057;
+  border-bottom: 1px solid #e9ecef;
+}
+
+/* ================= ALTERNATE COLUMN COLORS ================= */
+
+/* Column 1 – Name */
+.assets-table thead th:nth-child(1),
+.assets-table tbody td:nth-child(1) {
+  background-color: #f0f7ff;
+}
+
+/* Column 2 – Type */
+.assets-table thead th:nth-child(2),
+.assets-table tbody td:nth-child(2) {
+  background-color: #fff7e6;
+}
+
+/* Column 3 – Serial Number */
+.assets-table thead th:nth-child(3),
+.assets-table tbody td:nth-child(3) {
+  background-color: #f6ffed;
+}
+
+/* Column 4 – Purchase Date */
+.assets-table thead th:nth-child(4),
+.assets-table tbody td:nth-child(4) {
+  background-color: #fff1f0;
+}
+
+/* Column 5 – Status */
+.assets-table thead th:nth-child(5),
+.assets-table tbody td:nth-child(5) {
+  background-color: #f9f0ff;
+}
+
+/* Column 6 – Created Date */
+.assets-table thead th:nth-child(6),
+.assets-table tbody td:nth-child(6) {
+  background-color: #fcffe6;
+}
+
+/* Column 7 – Actions */
+.assets-table thead th:nth-child(7),
+.assets-table tbody td:nth-child(7) {
+  background-color: #f8f9fa;
+}
+
+/* ================= COLUMN SEPARATORS ================= */
+.assets-table th,
+.assets-table td {
+  border-right: 1px solid #dee2e6;
+}
+
+.assets-table th:last-child,
+.assets-table td:last-child {
+  border-right: none;
+}
+
+/* ================= ROW HOVER ================= */
+.assets-table tbody tr:hover td {
+  background-color: #e9f3ff !important;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* ================= SORT ICON COLOR ================= */
+.assets-table .p-sortable-column-icon {
+  color: #0d6efd;
+}
+
+/* ================= BUTTON ALIGNMENT ================= */
+.assets-table .btn {
+  white-space: nowrap;
+}
+
+/* ================= STATUS BADGE ================= */
+.badge {
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.badge-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* ================= NO DATA MESSAGE ================= */
+.primeng-no-data {
+  padding: 20px;
+  font-size: 15px;
+  color: #6c757d;
+}
+
+/* ================= PAGINATOR ================= */
+.p-paginator {
+  border-top: 1px solid #dee2e6;
+  padding-top: 10px;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+  .assets-table thead th,
+  .assets-table tbody td {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
